@@ -1,11 +1,11 @@
 {
-    "name": "mono-page/ext-locales",
+    "name": "mono-page/ext-languages",
     "description": "",
     "keywords": [
         "iiifx",
         "mono-page"
     ],
-    "homepage": "https://github.com/mono-page/ext-locales",
+    "homepage": "https://github.com/mono-page/ext-languages",
     "type": "library",
     "authors": [
         {
@@ -14,19 +14,20 @@
         }
     ],
     "require": {
-        "php": "^7.4"
+        "php": "^7.4",
+        "mono-page/core-domain": "@dev"
     },
     "require-dev": {
         "phpunit/phpunit": "^7.0"
     },
     "autoload": {
         "psr-4": {
-            "MonoPage\\Locales\\": "src"
+            "MonoPage\\Languages\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "MonoPage\\Locales\\Tests\\": "tests"
+            "MonoPage\\Languages\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -39,5 +40,11 @@
         "preferred-update": "dist",
         "sort-packages": true,
         "optimize-autoloader": true
-    }
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/mono-page/core-domain"
+        }
+    ]
 }

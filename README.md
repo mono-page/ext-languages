@@ -1,1 +1,1 @@
-# ext-locales
+# ext-languages

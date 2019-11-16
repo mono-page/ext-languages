@@ -1,6 +1,6 @@
-<?php
+<?php declare(strict_types=1);
 
-namespace Iiifx\MonoPage\Tests;
+namespace MonoPage\Languages\Tests;
 
 use PHPUnit\Framework\TestCase;
 
