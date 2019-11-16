@@ -1,2 +1,5 @@
-# PHPStorm
 .idea
+composer.lock
+docs
+vendor
+coverage
