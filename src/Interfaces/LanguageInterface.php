@@ -20,13 +20,13 @@ interface LanguageInterface extends EntityObject
      */
     public function getAlias(): string;
 
-    /**
-     * @return LocaleValue
-     */
-    public function getLocale(): LocaleValue;
-
-    /**
-     * @return string
-     */
-    public function getLocaleString(): string;
+//    /**
+//     * @return LocaleValue
+//     */
+//    public function getLocale(): LocaleValue;
+//
+//    /**
+//     * @return string
+//     */
+//    public function getLocaleString(): string;
 }

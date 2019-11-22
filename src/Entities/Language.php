@@ -5,34 +5,24 @@ namespace MonoPage\Languages\Entities;
 use MonoPage\Languages\Interfaces\LanguageInterface;
 use MonoPage\Languages\Values\LocaleValue;
 
-/**
- * Class Language
- */
+use Doctrine\ORM\Mapping as ORM;
+
 class Language implements LanguageInterface
 {
-    /**
-     * @var string
-     */
     protected string $alias;
-    /**
-     * @var string
-     */
     protected string $selfTitle;
-    /**
-     * @var LocaleValue
-     */
-    protected LocaleValue $locale;
+    //protected LocaleValue $locale;
 
     /**
      * @param string $alias
      * @param string $selfTitle
      * @param LocaleValue $locale
      */
-    public function __construct(string $alias, string $selfTitle, LocaleValue $locale)
+    public function __construct(string $alias, string $selfTitle/*, LocaleValue $locale*/)
     {
         $this->alias = $alias;
         $this->selfTitle = $selfTitle;
-        $this->locale = $locale;
+        //$this->locale = $locale;
     }
 
     /**
@@ -51,19 +41,19 @@ class Language implements LanguageInterface
         return $this->selfTitle;
     }
 
-    /**
-     * @return LocaleValue
-     */
-    public function getLocale(): LocaleValue
-    {
-        return $this->locale;
-    }
-
-    /**
-     * @return string
-     */
-    public function getLocaleString(): string
-    {
-        return $this->locale->getLocaleString();
-    }
+//    /**
+//     * @return LocaleValue
+//     */
+//    public function getLocale(): LocaleValue
+//    {
+//        return $this->locale;
+//    }
+//
+//    /**
+//     * @return string
+//     */
+//    public function getLocaleString(): string
+//    {
+//        return $this->locale->getLocaleString();
+//    }
 }
