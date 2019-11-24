@@ -31,4 +31,4 @@ $connection = [
 ];
 
 // obtaining the entity manager
-$entityManager = EntityManager::create($connection, $config);
+return $entityManager = EntityManager::create($connection, $config);

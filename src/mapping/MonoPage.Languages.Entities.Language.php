@@ -1,32 +1,27 @@
-<?php /** @noinspection PhpUnhandledExceptionInspection */
+<?php declare(strict_types=1);
 
+use Doctrine\ORM\Mapping\Builder\ClassMetadataBuilder;
 use Doctrine\ORM\Mapping\ClassMetadata;
+use MonoPage\Languages\Entities\Language;
 
 /**
  * @var ClassMetadata $metadata
+ *
+ * @see Language
  */
 
-$metadata->mapField(array(
-    'id' => true,
-    'fieldName' => 'alias',
-    'type' => 'integer'
-));
-
-$metadata->mapField(array(
-    'fieldName' => 'selfTitle',
-    'type' => 'string',
-    'options' => array(
-        'fixed' => true,
-        'comment' => "User's login name"
-    )
-));
-
-//$metadata->mapField(array(
-//    'fieldName' => 'login_count',
-//    'type' => 'integer',
-//    'nullable' => false,
-//    'options' => array(
-//        'unsigned' => true,
-//        'default' => 0
-//    )
-//));
+$builder = new ClassMetadataBuilder($metadata);
+$builder->createField('id', 'integer')
+    ->makePrimaryKey()
+    ->generatedValue()
+    ->nullable(false)
+    ->build();
+$builder->createField('alias', 'string')
+    ->nullable(false)
+    ->unique(true)
+    ->length(50)
+    ->build();
+$builder->createField('selfTitle', 'string')
+    ->nullable(false)
+    ->length(50)
+    ->build();

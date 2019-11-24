@@ -4,28 +4,18 @@ namespace MonoPage\Languages\Interfaces;
 
 use MonoPage\Domain\Interfaces\EntityObject;
 
-/**
- * Class PackageOfLanguagesInterface
- */
 interface PackageOfLanguagesInterface extends EntityObject
 {
-    /**
-     * @return string
-     */
+    public function getId(): string;
+
     public function getAlias(): string;
 
     /**
-     * @return array
+     * @return LanguageInterface[]
      */
     public function getLanguages(): array;
 
-    /**
-     * @return int
-     */
     public function getLanguageCount(): int;
 
-    /**
-     * @return LanguageInterface
-     */
-    public function getDefaultLanguage(): LanguageInterface;
+    public function getLanguageDefault(): LanguageInterface;
 }
