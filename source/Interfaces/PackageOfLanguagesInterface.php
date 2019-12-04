@@ -2,7 +2,7 @@
 
 namespace MonoPage\Languages\Interfaces;
 
-use MonoPage\Domain\Interfaces\EntityObject;
+use MonoPage\Core\Domain\Interfaces\EntityObject;
 
 interface PackageOfLanguagesInterface extends EntityObject
 {

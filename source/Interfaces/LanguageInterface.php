@@ -2,7 +2,7 @@
 
 namespace MonoPage\Languages\Interfaces;
 
-use MonoPage\Domain\Interfaces\EntityObject;
+use MonoPage\Core\Domain\Interfaces\EntityObject;
 use MonoPage\Languages\Values\LocaleValue;
 
 interface LanguageInterface extends EntityObject
@@ -13,5 +13,5 @@ interface LanguageInterface extends EntityObject
 
     public function getSelfTitle(): string;
 
-    public function getLocale(): LocaleValue;
+    //public function getLocale(): LocaleValue;
 }

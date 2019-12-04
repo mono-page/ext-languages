@@ -8,16 +8,24 @@ use MonoPage\Languages\Values\LocaleValue;
 class Language implements LanguageInterface
 {
     protected string $id;
-    protected string $alias;
-    protected string $selfTitle;
-    protected LocaleValue $locale;
 
-    public function __construct(?string $id, string $alias, string $selfTitle)
+    protected string $alias;
+
+    protected string $selfTitle;
+
+    //protected LocaleValue $locale;
+
+    private function __construct(string $id, string $alias, string $selfTitle)
     {
         $this->id = $id;
         $this->alias = $alias;
         $this->selfTitle = $selfTitle;
         // todo $localeValue
+    }
+
+    public function getId(): string
+    {
+        return $this->id;
     }
 
     public function getAlias(): string
@@ -30,13 +38,8 @@ class Language implements LanguageInterface
         return $this->selfTitle;
     }
 
-    public function getId(): string
-    {
-        return $this->id;
-    }
-
-    public function getLocale(): LocaleValue
-    {
-        return $this->locale;
-    }
+    //public function getLocale(): LocaleValue
+    //{
+    //    return $this->locale;
+    //}
 }
