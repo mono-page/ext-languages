@@ -2,9 +2,6 @@
 
 namespace MonoPage\Languages\Interfaces;
 
-/**
- * Interface LanguagesRepositoryInterface
- */
 interface LanguagesRepositoryInterface
 {
 
