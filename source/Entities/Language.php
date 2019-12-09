@@ -2,35 +2,17 @@
 
 namespace MonoPage\Languages\Entities;
 
-use MonoPage\Languages\Interfaces\LanguageInterface;
-use MonoPage\Languages\Values\LocaleValue;
+use MonoPage\Languages\Entities\Interfaces\LanguageInterface;
 
 class Language implements LanguageInterface
 {
     protected string $id;
-
-    protected string $alias;
-
     protected string $selfTitle;
-
-    //protected LocaleValue $locale;
-
-    private function __construct(string $id, string $alias, string $selfTitle)
-    {
-        $this->id = $id;
-        $this->alias = $alias;
-        $this->selfTitle = $selfTitle;
-        // todo $localeValue
-    }
+    protected string $locale;
 
     public function getId(): string
     {
         return $this->id;
-    }
-
-    public function getAlias(): string
-    {
-        return $this->alias;
     }
 
     public function getSelfTitle(): string
@@ -38,8 +20,8 @@ class Language implements LanguageInterface
         return $this->selfTitle;
     }
 
-    //public function getLocale(): LocaleValue
-    //{
-    //    return $this->locale;
-    //}
+    public function getLocale(): string
+    {
+        return $this->locale;
+    }
 }

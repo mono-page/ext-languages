@@ -6,8 +6,7 @@
     "type": "library",
     "require": {
         "php": "^7.4",
-        "doctrine/orm": "^2.6.2",
-        "mono-page/core": "v0.0.*@dev"
+        "mono-page/core": "^v0.0.1@dev"
     },
     "autoload": {
         "psr-4": {
@@ -23,7 +22,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-feature/v0.0.x": "v0.0.1-dev"
+            "dev-master": "v0.0.1-dev"
         }
     },
     "repositories": [
