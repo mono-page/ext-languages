@@ -10,15 +10,15 @@ interface LanguageServiceInterface extends ServiceInterface
 {
     public function createLanguage(string $selfTitle, string $locale): LanguageInterface;
 
-    public function deleteLanguage(LanguageInterface $language): void;
+    public function deleteLanguage(LanguageInterface $language): bool;
 
-    public function createPackage(LanguageInterface $language): LanguagePackageInterface;
+    public function createPackage(LanguagePackageInterface $package): LanguagePackageInterface;
 
-    public function deletePackage(LanguagePackageInterface $package): void;
+    public function deletePackage(LanguagePackageInterface $package): bool;
 
-    public function addLanguageToPackage(LanguagePackageInterface $package, LanguageInterface $language): void;
+    public function addLanguageToPackage(LanguagePackageInterface $package, LanguageInterface $language): bool;
 
-    public function removeLanguageFromPackage(LanguagePackageInterface $package, LanguageInterface $language): void;
+    public function removeLanguageFromPackage(LanguagePackageInterface $package, LanguageInterface $language): bool;
 
-    public function setDefaultLanguage(LanguagePackageInterface $package, LanguageInterface $language): void;
+    public function setPackageDefaultLanguage(LanguagePackageInterface $package, LanguageInterface $language): bool;
 }

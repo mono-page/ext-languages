@@ -11,11 +11,11 @@ interface LanguagePackageRepositoryInterface extends RepositoryInterface
 {
     public function get(string $id): ?LanguagePackageInterface;
 
-    public function add(LanguagePackageInterface $language): void;
+    public function add(LanguagePackageInterface $package): void;
 
-    public function update(LanguagePackageInterface $language): void;
+    public function update(LanguagePackageInterface $package): void;
 
-    public function remove(LanguagePackageInterface $language): void;
+    public function remove(LanguagePackageInterface $package): void;
 
     /**
      * @param Criteria $criteria

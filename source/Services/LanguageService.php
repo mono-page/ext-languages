@@ -26,33 +26,40 @@ class LanguageService implements LanguageServiceInterface
         // TODO: Implement createLanguage() method.
     }
 
-    public function deleteLanguage(LanguageInterface $language): void
+    public function deleteLanguage(LanguageInterface $language): bool
     {
-        // TODO: Implement deleteLanguage() method.
+        $this->languages->remove($language);
     }
 
-    public function createPackage(LanguageInterface $language): LanguagePackageInterface
+    public function createPackage(LanguagePackageInterface $language): LanguagePackageInterface
     {
         // TODO: Implement createPackage() method.
     }
 
-    public function deletePackage(LanguagePackageInterface $package): void
+    public function deletePackage(LanguagePackageInterface $package): bool
     {
-        // TODO: Implement deletePackage() method.
+        $this->packages->remove($package);
     }
 
-    public function addLanguageToPackage(LanguagePackageInterface $package, LanguageInterface $language): void
+    public function addLanguageToPackage(LanguagePackageInterface $package, LanguageInterface $language): bool
     {
-        // TODO: Implement addLanguageToPackage() method.
+        $package->addLanguage($language);
+
+        $this->packages->update($package);
     }
 
-    public function removeLanguageFromPackage(LanguagePackageInterface $package, LanguageInterface $language): void
+    public function removeLanguageFromPackage(LanguagePackageInterface $package, LanguageInterface $language): bool
     {
-        // TODO: Implement removeLanguageFromPackage() method.
+        $package->removeLanguage($language);
+
+        $this->packages->update($package);
     }
 
-    public function setDefaultLanguage(LanguagePackageInterface $package, LanguageInterface $language): void
+    public function setPackageDefaultLanguage(LanguagePackageInterface $package, LanguageInterface $language): bool
     {
-        // TODO: Implement setDefaultLanguage() method.
+        $package->addLanguage($language);
+        $package->setDefaultLanguage($language);
+
+        $this->packages->update($package);
     }
 }
