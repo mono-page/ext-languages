@@ -2,6 +2,7 @@
 
 namespace MonoPage\Languages\Repositories\Interfaces;
 
+use Doctrine\Common\Collections\Criteria;
 use Iterator;
 use MonoPage\Core\Interfaces\RepositoryInterface;
 use MonoPage\Languages\Entities\Interfaces\LanguagePackageInterface;
@@ -17,7 +18,9 @@ interface LanguagePackageRepositoryInterface extends RepositoryInterface
     public function remove(LanguagePackageInterface $language): void;
 
     /**
+     * @param Criteria $criteria
+     *
      * @return Iterator|LanguagePackageInterface[]
      */
-    public function all(): Iterator;
+    public function match(Criteria $criteria): Iterator;
 }

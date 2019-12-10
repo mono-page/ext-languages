@@ -6,6 +6,7 @@
     "type": "library",
     "require": {
         "php": "^7.4",
+        "doctrine/collections": "^1.6",
         "mono-page/core": "^v0.0.1@dev"
     },
     "autoload": {

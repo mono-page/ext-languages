@@ -2,9 +2,9 @@
 
 namespace MonoPage\Languages\Entities\Interfaces;
 
-use MonoPage\Core\Interfaces\EntityObjectInterface;
+use MonoPage\Core\Interfaces\EntityInterface;
 
-interface LanguagePackageInterface extends EntityObjectInterface
+interface LanguagePackageInterface extends EntityInterface
 {
     public function getId(): string;
 
