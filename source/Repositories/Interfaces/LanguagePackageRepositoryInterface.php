@@ -1,26 +1,26 @@
 <?php declare(strict_types=1);
 
-namespace MonoPage\Languages\Repositories\Interfaces;
+namespace Monopage\Languages\Repositories\Interfaces;
 
 use Doctrine\Common\Collections\Criteria;
-use Iterator;
-use MonoPage\Core\Interfaces\RepositoryInterface;
-use MonoPage\Languages\Entities\Interfaces\LanguagePackageInterface;
+use Generator;
+use Monopage\Contracts\RepositoryInterface;
+use Monopage\Languages\Entities\LanguagePackage;
 
 interface LanguagePackageRepositoryInterface extends RepositoryInterface
 {
-    public function get(string $id): ?LanguagePackageInterface;
+    public function get($id): ?LanguagePackage;
 
-    public function add(LanguagePackageInterface $package): void;
+    public function add(LanguagePackage $package): void;
 
-    public function update(LanguagePackageInterface $package): void;
+    public function update(LanguagePackage $package): void;
 
-    public function remove(LanguagePackageInterface $package): void;
+    public function remove(LanguagePackage $package): void;
 
     /**
      * @param Criteria $criteria
      *
-     * @return Iterator|LanguagePackageInterface[]
+     * @return Generator|LanguagePackage[]
      */
-    public function match(Criteria $criteria): Iterator;
+    public function match(Criteria $criteria): Generator;
 }

@@ -1,24 +1,25 @@
 <?php declare(strict_types=1);
 
-namespace MonoPage\Languages\Services\Interfaces;
+namespace Monopage\Languages\Services\Interfaces;
 
-use MonoPage\Core\Interfaces\ServiceInterface;
-use MonoPage\Languages\Entities\Interfaces\LanguageInterface;
-use MonoPage\Languages\Entities\Interfaces\LanguagePackageInterface;
+use Monopage\Contracts\ServiceInterface;
+use Monopage\Domain\Attributes\AliasValue;
+use Monopage\Domain\Attributes\StringValue;
+use Monopage\Languages\Attributes\LocaleValue;
+use Monopage\Languages\Entities\Language;
+use Monopage\Languages\Entities\LanguagePackage;
 
 interface LanguageServiceInterface extends ServiceInterface
 {
-    public function createLanguage(string $selfTitle, string $locale): LanguageInterface;
+    public function createLanguage(LocaleValue $locale, AliasValue $alias, StringValue $title): ?Language;
 
-    public function deleteLanguage(LanguageInterface $language): bool;
+    public function updateLanguage(Language $language): void;
 
-    public function createPackage(LanguagePackageInterface $package): LanguagePackageInterface;
+    public function deleteLanguage(Language $language): void;
 
-    public function deletePackage(LanguagePackageInterface $package): bool;
+    public function createPackage(AliasValue $alias, StringValue $title, Language $language): ?LanguagePackage;
 
-    public function addLanguageToPackage(LanguagePackageInterface $package, LanguageInterface $language): bool;
+    public function updatePackage(LanguagePackage $package): void;
 
-    public function removeLanguageFromPackage(LanguagePackageInterface $package, LanguageInterface $language): bool;
-
-    public function setPackageDefaultLanguage(LanguagePackageInterface $package, LanguageInterface $language): bool;
+    public function deletePackage(LanguagePackage $package): void;
 }

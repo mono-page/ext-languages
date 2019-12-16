@@ -1,14 +1,17 @@
 <?php declare(strict_types=1);
 
-namespace MonoPage\Languages\Services;
+namespace Monopage\Languages\Services;
 
-use MonoPage\Languages\Entities\Interfaces\LanguageInterface;
-use MonoPage\Languages\Entities\Interfaces\LanguagePackageInterface;
-use MonoPage\Languages\Repositories\Interfaces\LanguagePackageRepositoryInterface;
-use MonoPage\Languages\Repositories\Interfaces\LanguageRepositoryInterface;
-use MonoPage\Languages\Services\Interfaces\LanguageServiceInterface;
+use Monopage\Domain\Attributes\AliasValue;
+use Monopage\Domain\Attributes\StringValue;
+use Monopage\Languages\Attributes\LocaleValue;
+use Monopage\Languages\Entities\Language;
+use Monopage\Languages\Entities\LanguagePackage;
+use Monopage\Languages\Repositories\Interfaces\LanguagePackageRepositoryInterface;
+use Monopage\Languages\Repositories\Interfaces\LanguageRepositoryInterface;
+use Monopage\Languages\Services\Interfaces\LanguageServiceInterface;
 
-class LanguageService implements LanguageServiceInterface
+class LanguageService implements LanguageServiceInterface # todo грубо, первая реализация
 {
     protected LanguageRepositoryInterface $languages;
     protected LanguagePackageRepositoryInterface $packages;
@@ -21,45 +24,39 @@ class LanguageService implements LanguageServiceInterface
         $this->packages = $packages;
     }
 
-    public function createLanguage(string $selfTitle, string $locale): LanguageInterface
+    public function createLanguage(LocaleValue $locale, AliasValue $alias, StringValue $title): ?Language
     {
-        // TODO: Implement createLanguage() method.
+        $language = new Language($locale, $alias, $title);
+        $this->languages->add($language);
+
+        return $language;
     }
 
-    public function deleteLanguage(LanguageInterface $language): bool
+    public function updateLanguage(Language $language): void
+    {
+        $this->languages->update($language);
+    }
+
+    public function deleteLanguage(Language $language): void
     {
         $this->languages->remove($language);
     }
 
-    public function createPackage(LanguagePackageInterface $language): LanguagePackageInterface
+    public function createPackage(AliasValue $alias, StringValue $title, Language $language): ?LanguagePackage
     {
-        // TODO: Implement createPackage() method.
+        $package = new LanguagePackage($alias, $title, $language);
+        $this->packages->add($package);
+
+        return $package;
     }
 
-    public function deletePackage(LanguagePackageInterface $package): bool
+    public function updatePackage(LanguagePackage $package): void
+    {
+        $this->packages->update($package);
+    }
+
+    public function deletePackage(LanguagePackage $package): void
     {
         $this->packages->remove($package);
-    }
-
-    public function addLanguageToPackage(LanguagePackageInterface $package, LanguageInterface $language): bool
-    {
-        $package->addLanguage($language);
-
-        $this->packages->update($package);
-    }
-
-    public function removeLanguageFromPackage(LanguagePackageInterface $package, LanguageInterface $language): bool
-    {
-        $package->removeLanguage($language);
-
-        $this->packages->update($package);
-    }
-
-    public function setPackageDefaultLanguage(LanguagePackageInterface $package, LanguageInterface $language): bool
-    {
-        $package->addLanguage($language);
-        $package->setDefaultLanguage($language);
-
-        $this->packages->update($package);
     }
 }

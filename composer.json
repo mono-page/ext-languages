@@ -7,17 +7,15 @@
     "require": {
         "php": "^7.4",
         "doctrine/collections": "^1.6",
-        "mono-page/core": "^v0.0.1@dev"
+        "mono-page/contracts": "^v0.0.1@dev",
+        "mono-page/domain": "^v0.0.1@dev"
     },
     "autoload": {
         "psr-4": {
-            "MonoPage\\Languages\\": "source"
+            "Monopage\\Languages\\": "source"
         }
     },
     "config": {
-        "process-timeout": 1800,
-        "preferred-install": "dist",
-        "preferred-update": "dist",
         "sort-packages": true,
         "optimize-autoloader": true
     },
@@ -28,8 +26,12 @@
     },
     "repositories": [
         {
-            "type": "vcs",
-            "url": "https://github.com/mono-page/core"
+            "type": "git",
+            "url": "/home/iiifx/MonoPage/contracts"
+        },
+        {
+            "type": "git",
+            "url": "/home/iiifx/MonoPage/domain"
         }
     ]
 }
