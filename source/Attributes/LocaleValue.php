@@ -11,15 +11,39 @@ class LocaleValue implements ValueObjectInterface, StringableInterface
     protected string $languageSegment;
     protected string $territorySegment;
 
-    public function __construct(string $language, string $territory = '')
+    /**
+     * @param string $language
+     * @param string $territory
+     *
+     * @return static
+     *
+     * @throws InvalidAttributeValueException
+     */
+    public static function create(string $language, string $territory = ''): self
     {
-        $this->setLanguageSegment($language);
-        $this->setTerritorySegment($territory);
+        return new self($language, $territory);
     }
 
-    public function __toString(): string
+    protected function __construct(string $language, string $territory)
     {
-        return $this->getLocaleString();
+        if (!preg_match('/^[a-z]{2}$/', $language)) {
+            throw new InvalidAttributeValueException(sprintf(
+                'Segment "%s" in "%s" attribute can only consist of two lowercase Latin letters',
+                'language',
+                self::class
+            ));
+        }
+
+        if (!('' === $territory || preg_match('/^[A-Z]{2}$/', $territory))) {
+            throw new InvalidAttributeValueException(sprintf(
+                'Segment "%s" in "%s" attribute can be empty or consist of two capital Latin letters',
+                'territory',
+                self::class
+            ));
+        }
+
+        $this->languageSegment = $language;
+        $this->territorySegment = $territory;
     }
 
     public function getLocaleString(): string
@@ -36,44 +60,13 @@ class LocaleValue implements ValueObjectInterface, StringableInterface
         return $this->languageSegment;
     }
 
-    public function setLanguageSegment(string $language): self
-    {
-        if (!preg_match('/^[a-z]{2}$/', $language)) {
-            throw new InvalidAttributeValueException(sprintf(
-                'Segment "%s" in "%s" attribute can only consist of two lowercase Latin letters',
-                'language',
-                self::class
-            ));
-        }
-
-        $this->languageSegment = $language;
-
-        return $this;
-    }
-
     public function getTerritorySegment(): string
     {
         return $this->territorySegment;
     }
 
-    public function setTerritorySegment(string $territory): self
+    public function __toString(): string
     {
-        if ('' === $territory) {
-            $this->territorySegment = $territory;
-
-            return $this;
-        }
-
-        if (!preg_match('/^[A-Z]{2}$/', $territory)) {
-            throw new InvalidAttributeValueException(sprintf(
-                'Segment "%s" in "%s" attribute can only consist of two capital Latin letters',
-                'territory',
-                self::class
-            ));
-        }
-
-        $this->territorySegment = $territory;
-
-        return $this;
+        return $this->getLocaleString();
     }
 }
