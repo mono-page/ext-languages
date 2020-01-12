@@ -3,24 +3,23 @@
 namespace Monopage\Languages\Entities;
 
 use Monopage\Contracts\EntityInterface;
-use Monopage\Domain\Attributes\AliasValue;
-use Monopage\Domain\Attributes\DateTimeValue;
-use Monopage\Domain\Attributes\StringValue;
-use Monopage\Domain\Attributes\UUIDValue;
-use Monopage\Domain\Exceptions\DomainException;
+use Monopage\Contracts\Exceptions\DomainException;
+use Monopage\Properties\AliasProperty;
+use Monopage\Properties\StringProperty;
+use Monopage\Properties\UuidProperty;
 
 class LanguagePackage implements EntityInterface
 {
-    protected UUIDValue $uuid;
-    protected StringValue $title;
-    protected AliasValue $alias;
-    protected StringValue $locale;
+    protected UuidProperty $uuid;
+    protected StringProperty $title;
+    protected AliasProperty $alias;
+    protected StringProperty $locale;
     protected array $languages = [];
     protected Language $default;
-    protected DateTimeValue $dateTimeCreated;
-    protected DateTimeValue $dateTimeEdited;
+    //protected DateTimeValue $dateTimeCreated;
+    //protected DateTimeValue $dateTimeEdited;
 
-    public function __construct(AliasValue $alias, StringValue $title, Language $language)
+    public function __construct(AliasProperty $alias, StringProperty $title, Language $language)
     {
         $this->setAlias($alias);
         $this->setTitle($title);
@@ -51,29 +50,29 @@ class LanguagePackage implements EntityInterface
         return $this;
     }
 
-    public function getId(): UUIDValue
+    public function getId(): UuidProperty
     {
         return $this->uuid;
     }
 
-    public function getTitle(): StringValue
+    public function getTitle(): StringProperty
     {
         return $this->title;
     }
 
-    public function setTitle(StringValue $title): self
+    public function setTitle(StringProperty $title): self
     {
         $this->title = $title;
 
         return $this;
     }
 
-    public function getAlias(): AliasValue
+    public function getAlias(): AliasProperty
     {
         return $this->alias;
     }
 
-    public function setAlias(AliasValue $alias): self
+    public function setAlias(AliasProperty $alias): self
     {
         $this->alias = $alias;
 
@@ -141,32 +140,5 @@ class LanguagePackage implements EntityInterface
     public function getDefaultLanguage(): Language
     {
         return $this->default;
-    }
-
-    public function getDateTimeCreated(): DateTimeValue
-    {
-        return $this->dateTimeCreated;
-    }
-
-    public function setDateTimeCreated(DateTimeValue $created): self
-    {
-        $this->dateTimeCreated = $created;
-
-        return $this;
-    }
-
-    /**
-     * @return DateTimeValue
-     */
-    public function getDateTimeEdited(): DateTimeValue
-    {
-        return $this->dateTimeEdited;
-    }
-
-    public function setDateTimeEdited(DateTimeValue $edited = null): self
-    {
-        $this->dateTimeEdited = $edited;
-
-        return $this;
     }
 }

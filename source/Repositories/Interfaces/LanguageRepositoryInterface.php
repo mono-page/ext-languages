@@ -3,7 +3,7 @@
 namespace Monopage\Languages\Repositories\Interfaces;
 
 use Doctrine\Common\Collections\Criteria;
-use Generator;
+use Iterator;
 use Monopage\Contracts\RepositoryInterface;
 use Monopage\Languages\Entities\Language;
 
@@ -20,7 +20,7 @@ interface LanguageRepositoryInterface extends RepositoryInterface
     /**
      * @param Criteria $criteria
      *
-     * @return Generator|Language[]
+     * @return Iterator|Language[]
      */
-    public function match(Criteria $criteria): Generator;
+    public function match(Criteria $criteria): Iterator;
 }

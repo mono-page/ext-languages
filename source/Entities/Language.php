@@ -3,89 +3,64 @@
 namespace Monopage\Languages\Entities;
 
 use Monopage\Contracts\EntityInterface;
-use Monopage\Domain\Attributes\AliasValue;
-use Monopage\Domain\Attributes\DateTimeValue;
-use Monopage\Domain\Attributes\StringValue;
-use Monopage\Domain\Attributes\UUIDValue;
-use Monopage\Languages\Attributes\LocaleValue;
+use Monopage\Properties\AliasProperty;
+use Monopage\Properties\LocaleProperty;
+use Monopage\Properties\StringProperty;
+use Monopage\Properties\UuidProperty;
 
 class Language implements EntityInterface
 {
-    protected UUIDValue $uuid;
-    protected StringValue $title;
-    protected AliasValue $alias;
-    protected LocaleValue $locale;
-    protected DateTimeValue $dateTimeCreated;
-    protected DateTimeValue $dateTimeEdited;
+    protected UuidProperty $uuid;
+    protected StringProperty $title;
+    protected AliasProperty $alias;
+    protected LocaleProperty $locale;
+    //protected DateTimeValue $dateTimeCreated;
+    //protected DateTimeValue $dateTimeEdited;
 
-    public function __construct(LocaleValue $locale, AliasValue $alias, StringValue $title)
+    public function __construct(LocaleProperty $locale, AliasProperty $alias, StringProperty $title)
     {
         $this->setLocale($locale);
         $this->setAlias($alias);
         $this->setTitle($title);
     }
 
-    public function getId(): UUIDValue
+    public function getId(): UuidProperty
     {
         return $this->uuid;
     }
 
-    public function getTitle(): StringValue
+    public function getTitle(): StringProperty
     {
         return $this->title;
     }
 
-    public function setTitle(StringValue $title): self
+    public function setTitle(StringProperty $title): self
     {
         $this->title = $title;
 
         return $this;
     }
 
-    public function getAlias(): AliasValue
+    public function getAlias(): AliasProperty
     {
         return $this->alias;
     }
 
-    public function setAlias(AliasValue $alias): self
+    public function setAlias(AliasProperty $alias): self
     {
         $this->alias = $alias;
 
         return $this;
     }
 
-    public function getLocale(): LocaleValue
+    public function getLocale(): LocaleProperty
     {
         return $this->locale;
     }
 
-    public function setLocale(LocaleValue $locale): self
+    public function setLocale(LocaleProperty $locale): self
     {
         $this->locale = $locale;
-
-        return $this;
-    }
-
-    public function getDateTimeCreated(): DateTimeValue
-    {
-        return $this->dateTimeCreated;
-    }
-
-    public function setDateTimeCreated(DateTimeValue $created): self
-    {
-        $this->dateTimeCreated = $created;
-
-        return $this;
-    }
-
-    public function getDateTimeEdited(): DateTimeValue
-    {
-        return $this->dateTimeEdited;
-    }
-
-    public function setDateTimeEdited(DateTimeValue $edited = null): self
-    {
-        $this->dateTimeEdited = $edited;
 
         return $this;
     }
